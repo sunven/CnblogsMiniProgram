@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="M:Api.Controllers.BlogController.FortyeightHoursTopViewPosts(System.Int32)">
+            <summary>
+            48小时阅读排行
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BlogController.TenDaysTopDiggPosts(System.Int32)">
+            <summary>
+            十天推荐排行
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BlogController.Recent(System.Int32)">
+            <summary>
+            最近
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BlogController.Paged(System.Int32,System.Int32)">
+            <summary>
+            分页
+            </summary>
+            <param name="page"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BlogController.Body(System.Int32)">
+            <summary>
+            博客内容
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.BlogController.Comments(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            博客评论
+            </summary>
+            <param name="id"></param>
+            <param name="page"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.Hot(System.Int32)">
+            <summary>
+            热门新闻
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.Recent(System.Int32)">
+            <summary>
+            最近新闻
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.Recommend(System.Int32,System.Int32)">
+            <summary>
+            推荐新闻
+            </summary>
+            <param name="page"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.Item(System.Int32)">
+            <summary>
+            新闻内容
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.NewsController.Comments(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            新闻评论
+            </summary>
+            <param name="id"></param>
+            <param name="page"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
