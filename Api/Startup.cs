@@ -47,6 +47,8 @@ namespace Api
                 var xmlPath = Path.Combine(basePath, "Api.xml");
                 c.IncludeXmlComments(xmlPath);
             });
+            //services.AddOptions();
+            //services.Configure<long>(Configuration.GetSection("oprt"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

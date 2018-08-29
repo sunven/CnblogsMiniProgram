@@ -49,6 +49,22 @@
             <param name="size"></param>
             <returns></returns>
         </member>
+        <member name="T:Api.Controllers.CnControllerBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Api.Controllers.CnControllerBase.HttpClientFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.CnControllerBase.#ctor(System.Net.Http.IHttpClientFactory)">
+            <summary>
+            
+            </summary>
+            <param name="httpClientFactory"></param>
+        </member>
         <member name="M:Api.Controllers.NewsController.Hot(System.Int32)">
             <summary>
             热门新闻
@@ -86,6 +102,33 @@
             <param name="page"></param>
             <param name="size"></param>
             <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.ValuesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.ValuesController.#ctor(System.Net.Http.IHttpClientFactory)">
+            <summary>
+            
+            </summary>
+            <param name="httpClientFactory"></param>
+        </member>
+        <member name="T:Api.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Api.Startup.Configuration">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>
