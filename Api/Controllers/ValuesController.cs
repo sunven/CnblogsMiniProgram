@@ -29,36 +29,7 @@ namespace Api.Controllers
         [HttpGet]
         public object Get()
         {
-            var client = _httpClientFactory.CreateClient("wcf.open.cnblogs");
-            var content = new StringContent("");
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-            var response = client.GetAsync("news/hot/10");
-            response.Result.EnsureSuccessStatusCode();
-            var xmlStr = response.Result.Content.ReadAsStringAsync().Result;
-            var doc = new XmlDocument();
-            doc.LoadXml(xmlStr);
-            var nameSpace = new XmlNamespaceManager(doc.NameTable);
-            nameSpace.AddNamespace("space", "http://www.w3.org/2005/Atom");
-            var nodes = doc.DocumentElement.SelectNodes("space:entry", nameSpace);
-            var list = new List<EntryModel>();
-            foreach (XmlNode xmlNode in nodes)
-            {
-                list.Add(new EntryModel
-                {
-                    Id = xmlNode.SelectSingleNode("space:id", nameSpace).InnerText,
-                    Title = xmlNode.SelectSingleNode("space:title", nameSpace).InnerText,
-                    Summary = xmlNode.SelectSingleNode("space:summary", nameSpace).InnerText,
-                    Published = xmlNode.SelectSingleNode("space:published", nameSpace).InnerText,
-                    Updated = xmlNode.SelectSingleNode("space:updated", nameSpace).InnerText,
-                    Link = xmlNode.SelectSingleNode("space:link", nameSpace).Attributes["href"].InnerText,
-                    Diggs = xmlNode.SelectSingleNode("space:diggs", nameSpace).InnerText,
-                    Views = xmlNode.SelectSingleNode("space:views", nameSpace).InnerText,
-                    Comments = xmlNode.SelectSingleNode("space:comments", nameSpace).InnerText,
-                    TopicIcon = xmlNode.SelectSingleNode("space:topicIcon", nameSpace).InnerText,
-                    SourceName = xmlNode.SelectSingleNode("space:sourceName", nameSpace).InnerText
-                });
-            }
-            return list;
+            return "123";
         }
 
         // GET api/values/5

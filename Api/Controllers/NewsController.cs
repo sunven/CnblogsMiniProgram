@@ -15,9 +15,9 @@ namespace Api.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet("{count}")]
-        public List<EntryModel> Hot(int count)
+        public List<NewsEntryModel> Hot(int count)
         {
-            return Get("news/hot/" + count);
+            return GetNewsList("news/hot/" + count);
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace Api.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet("{count}")]
-        public List<EntryModel> Recent(int count)
+        public List<NewsEntryModel> Recent(int count)
         {
-            return Get("news/recent/" + count);
+            return GetNewsList("news/recent/" + count);
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace Api.Controllers
         /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet("paged/{page}/{size}")]
-        public List<EntryModel> Recommend(int page, int size)
+        public List<NewsEntryModel> Recommend(int page, int size)
         {
-            return Get($"news/recommend/paged/{page}/{size}");
+            return GetNewsList($"news/recommend/paged/{page}/{size}");
         }
 
         /// <summary>
@@ -62,10 +62,12 @@ namespace Api.Controllers
         /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet("{id}/{page}/{size}")]
-        public List<EntryModel> Comments(int id, int page, int size)
+        public List<NewsEntryModel> Comments(int id, int page, int size)
         {
-            return Get($"news/item/{id}/comments/{page}/{size}");
+            return GetNewsList($"news/item/{id}/comments/{page}/{size}");
         }
+
+
 
         public NewsController(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {

@@ -1,4 +1,5 @@
-﻿using Api.Models;
+﻿using System;
+using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -26,31 +27,69 @@ namespace Api.Controllers
             HttpClientFactory = httpClientFactory;
         }
 
-        protected List<EntryModel> Get(string url)
+        protected XmlNodeList Get(string url, out XmlNamespaceManager nameSpace)
         {
             var doc = GetXmlDocument(url);
-            var nameSpace = new XmlNamespaceManager(doc.NameTable);
+            nameSpace = new XmlNamespaceManager(doc.NameTable);
             nameSpace.AddNamespace("space", "http://www.w3.org/2005/Atom");
             var nodes = doc.DocumentElement.SelectNodes("space:entry", nameSpace);
-            var list = new List<EntryModel>();
+            return nodes;
+        }
+
+        protected List<NewsEntryModel> GetNewsList(string url)
+        {
+            var nodes = Get(url, out var nameSpace);
+            var list = new List<NewsEntryModel>();
             foreach (XmlNode xmlNode in nodes)
             {
-                list.Add(new EntryModel
-                {
-                    Id = xmlNode.SelectSingleNode("space:id", nameSpace).InnerText,
-                    Title = xmlNode.SelectSingleNode("space:title", nameSpace).InnerText,
-                    Summary = xmlNode.SelectSingleNode("space:summary", nameSpace).InnerText,
-                    Published = xmlNode.SelectSingleNode("space:published", nameSpace).InnerText,
-                    Updated = xmlNode.SelectSingleNode("space:updated", nameSpace).InnerText,
-                    Link = xmlNode.SelectSingleNode("space:link", nameSpace).Attributes["href"].InnerText,
-                    Diggs = xmlNode.SelectSingleNode("space:diggs", nameSpace).InnerText,
-                    Views = xmlNode.SelectSingleNode("space:views", nameSpace).InnerText,
-                    Comments = xmlNode.SelectSingleNode("space:comments", nameSpace).InnerText,
-                    TopicIcon = xmlNode.SelectSingleNode("space:topicIcon", nameSpace).InnerText,
-                    SourceName = xmlNode.SelectSingleNode("space:sourceName", nameSpace).InnerText
-                });
+                list.Add(GetNewsEntryModel(nameSpace, xmlNode));
             }
             return list;
+        }
+
+        protected List<BlogEntryModel> GetBlogList(string url)
+        {
+            var nodes = Get(url, out var nameSpace);
+            var list = new List<BlogEntryModel>();
+            foreach (XmlNode xmlNode in nodes)
+            {
+                list.Add(GetBolgEntryModel(nameSpace, xmlNode));
+            }
+            return list;
+        }
+
+        private NewsEntryModel GetNewsEntryModel(XmlNamespaceManager nameSpace, XmlNode xmlNode)
+        {
+            return new NewsEntryModel
+            {
+                Id = xmlNode.SelectSingleNode("space:id", nameSpace).InnerText,
+                Title = xmlNode.SelectSingleNode("space:title", nameSpace).InnerText,
+                Summary = xmlNode.SelectSingleNode("space:summary", nameSpace).InnerText,
+                Published = xmlNode.SelectSingleNode("space:published", nameSpace).InnerText,
+                Updated = xmlNode.SelectSingleNode("space:updated", nameSpace).InnerText,
+                Link = xmlNode.SelectSingleNode("space:link", nameSpace).Attributes["href"].InnerText,
+                Diggs = xmlNode.SelectSingleNode("space:diggs", nameSpace).InnerText,
+                Views = xmlNode.SelectSingleNode("space:views", nameSpace).InnerText,
+                Comments = xmlNode.SelectSingleNode("space:comments", nameSpace).InnerText,
+                TopicIcon = xmlNode.SelectSingleNode("space:topicIcon", nameSpace).InnerText,
+                SourceName = xmlNode.SelectSingleNode("space:sourceName", nameSpace).InnerText
+            };
+        }
+
+        private BlogEntryModel GetBolgEntryModel(XmlNamespaceManager nameSpace, XmlNode xmlNode)
+        {
+            return new BlogEntryModel
+            {
+                Id = xmlNode.SelectSingleNode("space:id", nameSpace).InnerText,
+                Title = xmlNode.SelectSingleNode("space:title", nameSpace).InnerText,
+                Summary = xmlNode.SelectSingleNode("space:summary", nameSpace).InnerText,
+                Published = xmlNode.SelectSingleNode("space:published", nameSpace).InnerText,
+                Updated = xmlNode.SelectSingleNode("space:updated", nameSpace).InnerText,
+                Link = xmlNode.SelectSingleNode("space:link", nameSpace).Attributes["href"].InnerText,
+                Diggs = xmlNode.SelectSingleNode("space:diggs", nameSpace).InnerText,
+                Views = xmlNode.SelectSingleNode("space:views", nameSpace).InnerText,
+                Comments = xmlNode.SelectSingleNode("space:comments", nameSpace).InnerText
+            };
         }
 
         protected NewsBody Body(string url)

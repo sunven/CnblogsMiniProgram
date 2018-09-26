@@ -19,18 +19,5 @@
         public string Views { get; set; }
 
         public string Comments { get; set; }
-
-        public string TopicIcon { get; set; }
-
-        public string SourceName { get; set; }
-
-        public string Content { get; set; }
-    }
-
-    public class Author
-    {
-        public string Name { get; set; }
-
-        public string Uri { get; set; }
     }
 }

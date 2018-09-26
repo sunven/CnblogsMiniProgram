@@ -15,9 +15,9 @@ namespace Api.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet("{count}")]
-        public List<EntryModel> FortyeightHoursTopViewPosts(int count)
+        public List<BlogEntryModel> FortyeightHoursTopViewPosts(int count)
         {
-            return Get("blog/48HoursTopViewPosts/" + count);
+            return GetBlogList("blog/48HoursTopViewPosts/" + count);
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace Api.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet("{count}")]
-        public List<EntryModel> TenDaysTopDiggPosts(int count)
+        public List<BlogEntryModel> TenDaysTopDiggPosts(int count)
         {
-            return Get("blog/TenDaysTopDiggPosts/" + count);
+            return GetBlogList("blog/TenDaysTopDiggPosts/" + count);
         }
 
         /// <summary>
@@ -37,9 +37,9 @@ namespace Api.Controllers
         /// <param name="count"></param>
         /// <returns></returns>
         [HttpGet("{count}")]
-        public List<EntryModel> Recent(int count)
+        public List<BlogEntryModel> Recent(int count)
         {
-            return Get("blog/sitehome/recent/" + count);
+            return GetBlogList("blog/sitehome/recent/" + count);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace Api.Controllers
         /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet("{page}/{size}")]
-        public List<EntryModel> Paged(int page, int size)
+        public List<BlogEntryModel> Paged(int page, int size)
         {
-            return Get($"blog/sitehome/paged/{page}/{size}");
+            return GetBlogList($"blog/sitehome/paged/{page}/{size}");
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace Api.Controllers
         /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet("{id}/{page}/{size}")]
-        public List<EntryModel> Comments(int id, int page, int size)
+        public List<BlogEntryModel> Comments(int id, int page, int size)
         {
-            return Get($"blog/post/{id}/comments/{page}/{size}");
+            return GetBlogList($"blog/post/{id}/comments/{page}/{size}");
         }
 
         public BlogController(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
