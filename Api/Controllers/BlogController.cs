@@ -60,9 +60,10 @@ namespace Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public NewsBody Body(int id)
+        public string Body(int id)
         {
-            return Body("blog/post/body/" + id);
+            var doc = GetXmlDocument("blog/post/body/" + id);
+            return doc.DocumentElement.InnerText;
         }
 
         /// <summary>

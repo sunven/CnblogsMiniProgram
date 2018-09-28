@@ -109,7 +109,7 @@ namespace Api.Controllers
             return newsBody;
         }
 
-        private XmlDocument GetXmlDocument(string url)
+        protected XmlDocument GetXmlDocument(string url)
         {
             var client = HttpClientFactory.CreateClient("wcf.open.cnblogs");
             var content = new StringContent("");
